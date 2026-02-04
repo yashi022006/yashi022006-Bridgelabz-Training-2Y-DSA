@@ -1,0 +1,45 @@
+(a) Algorithm A satisfies all five fundamental properties of an algorithm: it takes temperature array and n as input, produces a single average value as output, all steps are clearly defined, the loop runs a finite number of times, and all operations are basic and executable. Algorithm B also satisfies the formal properties of input, output, definiteness, finiteness, and effectiveness, but satisfying these properties alone does not guarantee correctness of the result.
+
+(b) For temperatures [20, 25, 22, 24, 21] and n = 5, Algorithm A adds all values to get total = 112 and then divides once by 5, giving the correct average 22.4. Algorithm B first computes the sum as 112 but then divides the sum by 5 repeatedly inside a loop, which reduces the value again and again and finally produces an incorrect result close to zero.
+
+(c) The logical error in Algorithm B is that division by n is performed n times instead of once. This violates the mathematical principle of averaging, where the sum of all elements must be divided by n exactly one time. Repeated division changes the value exponentially and gives a wrong result.
+
+(d) Algorithm A is simpler, easier to understand, logically correct, and reliable, while Algorithm B is unnecessarily complex and incorrect despite having similar time complexity. Therefore, Algorithm A should be chosen for production deployment because correctness is more important than any other factor.
+
+(e) To verify correctness, test cases should include normal input like multiple temperatures, n = 1 where the average equals the value itself, n = 0 which should be handled as an error, negative temperature values, and a mix of positive and negative temperatures to ensure the algorithm works in all scenarios.
+
+Problem 2
+
+(a) In the worst case with 10 million users, linear search requires 10 million comparisons because it checks each username one by one, binary search requires about log₂(10,000,000) ≈ 24 comparisons since the search space halves each time, and hash table lookup requires only one comparison on average.
+
+(b) Linear search has time complexity O(n) because the number of comparisons grows directly with input size, binary search has O(log n) because the list is divided into halves repeatedly, and hash table lookup has O(1) average time because access is done using a hash function.
+
+(c) As n increases from 100 to 10 million, linear search comparisons increase linearly, binary search grows very slowly, and hash table lookup remains constant. This shows that linear search does not scale well, while binary search and hashing scale efficiently.
+
+(d) At 50,000 searches per second with each comparison taking 1 nanosecond, linear search would take hundreds of seconds per second and fail, while binary search and hash table lookup take only milliseconds or microseconds and can easily handle the load.
+
+(e) Although binary search is faster, it requires sorting the list first, which takes O(n log n) time. Sorting becomes worthwhile when the number of searches is large, specifically when the number of searches is greater than log₂(n), because the initial sorting cost gets amortized over many fast searches.
+
+Problem 3
+
+(a) Implementation A uses a nested loop, so in the worst case it compares each prerequisite with all completed courses, giving a time complexity of O(nm), while Implementation B first builds a hash set in O(n) time and then checks prerequisites in O(m) time, giving O(n + m).
+
+(b) Implementation A uses constant auxiliary space because no extra data structures are created, while Implementation B uses O(n) extra space to store the hash set of completed courses.
+
+(c) With n = 40, m = 5, and 100,000 students per day, Implementation A performs 40 × 5 × 100,000 = 20 million comparisons daily, while Implementation B uses 40 entries per student and about 32 MB of memory per day assuming each entry takes 8 bytes.
+
+(d) Given the constraints of response time under 10 ms and total memory under 1 GB, Implementation B is preferred because hash lookups are very fast and the memory usage remains well within limits even with 10,000 concurrent requests.
+
+(e) A hybrid approach can be used where the nested loop method is chosen when the number of prerequisites is very small, such as 1 or 2, and the hash-based method is used when prerequisites are larger. A reasonable switching threshold is m ≥ 3.
+
+Problem 4
+
+(a) Using the definition of Big-O, Bubble Sort has worst-case O(n²) because the number of comparisons grows proportionally to n², while Merge Sort has O(n log n) because each level of recursion processes n elements and there are log n levels.
+
+(b) For nearly sorted data, Insertion Sort is best because it runs close to O(n), for random data Merge Sort is preferred due to consistent performance, and for reverse sorted data Merge Sort is also best because it avoids the quadratic worst case of simpler algorithms.
+
+(c) Merge Sort is expressed using Θ(n log n) because its best, average, and worst cases are all the same, while Quick Sort is expressed as O(n log n) in the average case because its worst case can degrade to O(n²).
+
+(d) For small datasets, simple algorithms like Insertion Sort are efficient, for medium random data Quick Sort performs well on average, and for large datasets Merge Sort is preferred due to guaranteed n log n performance regardless of input order.
+
+(e) For Mystery Sort with T(n) = 5n² + 100n + 1000 and Merge Sort with T(n) = 10n log₂n, the quadratic term dominates for large n, meaning Mystery Sort is only faster for very small values of n and becomes slower than Merge Sort as n increases.
