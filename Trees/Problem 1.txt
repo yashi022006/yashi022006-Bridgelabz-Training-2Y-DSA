@@ -1,0 +1,15 @@
+Problem 1
+       given tree    CEO
+                    /   \
+                  CTO   CFO
+                  / \     \
+                 DevLead  HR
+                 / \
+              Dev1 Dev2
+
+Answers:
+a) Leaf Nodes: Dev1, Dev2, HR
+b) Height of tree: 3 (edges count) or 4 (levels count)
+c) Depth of DevLead: 2
+d) Ancestors of Dev1: DevLead → CTO → CEO
+e) Degree of CTO: 2 (DevLead, HR)
